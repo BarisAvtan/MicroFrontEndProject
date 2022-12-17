@@ -4,6 +4,7 @@ import "./index.scss";
 const Header = React.lazy(() => import("home/Header"));
 import CustomButton from "home/CustomButton";
 import { showAlert } from "home/utils";
+import UserContent from './UserContent';
 const App = () => {
   const [show, setShow] = useState(false)
  
@@ -14,8 +15,10 @@ const App = () => {
       <Suspense fallback={<div>Wait...</div>}>
       <Header />
       </Suspense>}
-
+  
       <CustomButton />
+      Hello hi
+      <UserContent/>
       <div>User App</div>
       <button   onClick={() => {
         showAlert("Barış");

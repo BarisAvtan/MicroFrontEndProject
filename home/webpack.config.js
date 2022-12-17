@@ -43,7 +43,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "home",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        user:"user@http://localhost:3001/remoteEntry.js"
+      },
       exposes: {
         "./Header":"./src/Header.jsx",
         "./CustomButton":"./src/CustomButton.jsx",
