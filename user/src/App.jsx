@@ -1,18 +1,28 @@
-import React from "react";
+import React, { Suspense ,useState} from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import Header from "home/Header";
+const Header = React.lazy(() => import("home/Header"));
 import CustomButton from "home/CustomButton";
-import {showAlert} from "home/utils";
-const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <Header />
-   <CustomButton/>
-   <div>User App</div>
-   <button onClick={()=>{
-    showAlert("Barış");
-   }}>ClickMe</button>
+import { showAlert } from "home/utils";
+const App = () => {
+  const [show, setShow] = useState(false)
+ 
+  return (
+    <div className="mt-10 text-3xl mx-auto max-w-6xl">
 
-  </div>
-);
+      {show && 
+      <Suspense fallback={<div>Wait...</div>}>
+      <Header />
+      </Suspense>}
+
+      <CustomButton />
+      <div>User App</div>
+      <button onClick={() => {
+        showAlert("Barış");
+        setShow(true);
+      }}>ClickMe</button>
+    </div>
+    
+  )
+}
 ReactDOM.render(<App />, document.getElementById("app"));
