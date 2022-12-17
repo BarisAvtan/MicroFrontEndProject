@@ -17,12 +17,17 @@ const App = () => {
 
       <CustomButton />
       <div>User App</div>
-      <button onClick={() => {
+      <button   onClick={() => {
         showAlert("Barış");
-        setShow(true);
-      }}>ClickMe</button>
+        if(show==false){
+          setShow(true);
+        }else{
+          setShow(false);
+        }
+       
+      }}>Header visible click !!!!</button>
     </div>
-    
+
   )
 }
 ReactDOM.render(<App />, document.getElementById("app"));
